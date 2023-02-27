@@ -23,7 +23,7 @@ export const sendEmail = (to, url, txt, subject) => {
   oauth2Client.setCredentials({
     token: CLIENT_SECRET_EMAIL_TOKEN,
   });
-  const accessToken = oauth2Client.getAcessToken();
+  const accessToken = oauth2Client.getAccessToken();
   const smtpTransport = nodemailer.createTransport({
     service: "gmail",
     auth: {
@@ -41,7 +41,7 @@ export const sendEmail = (to, url, txt, subject) => {
     subject: subject,
     html: "",
   };
-  smtpTransport.sendEmail(mailOptions, (err, infos) => {
+  smtpTransport.sendMmail(mailOptions, (err, infos) => {
     if(err) return err;
     return infos;
   });
